@@ -1,0 +1,1 @@
+ใช้ qawsedrftgyhujikol ในการเปลี่ยนค่า
