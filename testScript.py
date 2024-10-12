@@ -2,15 +2,14 @@
 # ในกรณีที่มีการสร้าง function อื่น ๆ ให้ระบุว่า input-output คืออะไรด้วย
 '''
 ชื่อ_รหัส(ex: ธนวัฒน์_6461)
-1.
-2.
-3.
+1.ปวริศร์_6536
+2.ภาสวรๅ_6548
 '''
 #===========================================<ตรวจคำตอบข้อ 1>====================================================#
 #code here
-import pygame
-import numpy as np
-from FRA333_HW3_xx_xx import endEffectorJacobianHW3, checkSingularityHW3, computeEffortHW3
+import pygame # type: ignore
+import numpy as np # type: ignore
+from FRA333_HW3_36_48 import endEffectorJacobianHW3, checkSingularityHW3, computeEffortHW3
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
