@@ -7,3 +7,4 @@
 	uo ในการเปลี่ยนค่า Fz
 	jl ในการเปลี่ยนค่า Fy
 	ik ในการเปลี่ยนค่า Fx
+	spacebar เพื่อ เช็ค singularity

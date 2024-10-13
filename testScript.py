@@ -2,13 +2,14 @@
 # ในกรณีที่มีการสร้าง function อื่น ๆ ให้ระบุว่า input-output คืออะไรด้วย
 '''
 ชื่อ_รหัส(ex: ธนวัฒน์_6461)
-1.ปวริศร์_6536
-2.ภาสวร_6548
+1.
+2.
+3.
 '''
 #===========================================<ตรวจคำตอบข้อ 1>====================================================#
 #code here
-import pygame # type: ignore
-import numpy as np # type: ignore
+import pygame
+import numpy as np
 from FRA333_HW3_36_48 import endEffectorJacobianHW3, checkSingularityHW3, computeEffortHW3
 
 pygame.init()
@@ -24,6 +25,7 @@ running = True
 q = [0.0, 0.0, 0.0]  # Initial joint angles for 3 joints
 w = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # Initial external wrench components
 clock = pygame.time.Clock()
+check_singularity_flag = False
 
 while running:
     screen.fill(WHITE)
@@ -69,13 +71,17 @@ while running:
     if keys[pygame.K_h]:
         w[5] -= 0.1  # Decrease moment component Mz
 
+    # Check singularity when pressing spacebar
+    if keys[pygame.K_SPACE]:
+        check_singularity_flag = True
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     # Display Jacobian, Singularity, Joint Angles, and Effort Information
     jacobian = endEffectorJacobianHW3(q)  # Using all 3 joint angles for Jacobian calculation
-    singularity = checkSingularityHW3(q)
+    singularity = checkSingularityHW3(q) if check_singularity_flag else None
     efforts = computeEffortHW3(q, w)
 
     font = pygame.font.SysFont(None, 24)
@@ -107,10 +113,11 @@ while running:
         screen.blit(row_text, (50, y_offset))
         y_offset += 30
 
-    # Display Singularity Status
-    singularity_text = font.render(f'Singularity: {singularity}', True, RED if singularity else BLUE)
-    screen.blit(singularity_text, (50, y_offset))
-    y_offset += 30
+    # Display Singularity Status if checked
+    if check_singularity_flag:
+        singularity_text = font.render(f'Singularity: {singularity}', True, RED if singularity else BLUE)
+        screen.blit(singularity_text, (50, y_offset))
+        y_offset += 30
 
     # Display Efforts
     efforts_text = font.render('Efforts:', True, BLACK)
@@ -125,4 +132,12 @@ while running:
     clock.tick(60)  # Limit the loop to 60 iterations per second
 
 pygame.quit()
+#==============================================================================================================#
+#===========================================<ตรวจคำตอบข้อ 2>====================================================#
+#code here
+
+#==============================================================================================================#
+#===========================================<ตรวจคำตอบข้อ 3>====================================================#
+#code here
+
 #==============================================================================================================#
