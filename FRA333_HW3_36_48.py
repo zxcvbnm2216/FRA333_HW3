@@ -67,7 +67,7 @@ def checkSingularityHW3(q):
     epsilon = 0.001
 
     # If determinant is close to zero, it's a singularity
-    if abs(det_Jv) < epsilon:
+    if det_Jv < epsilon:
         return 1
     else:
         return 0
